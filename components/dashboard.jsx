@@ -1,27 +1,22 @@
 import { farmItems } from "./json";
+import Image from "next/image";
 
 const Dashboard = ({ name, person, no_of_items, calcTotal }) => {
   // const value = newFunction(2, 4);
   return (
     <div className="p-2">
       <div>
-        <div>Welcome {name}: These are the items we have: </div>
-        {farmItems.map((item, index) => {
-          return (
-            <div
-              key={index}
-              className="border-2 border-gray-400 w-full p-2 my-1"
-            >
-              {index + 1}. Type of Animal: {item.name}. Weights:{" "}
-              {item.weight_kg}kg. Color: {item.color}.
-            </div>
-          );
-        })}
         <div>
-          We will deliver your goods to: {person.address.city}. We will deliver{" "}
-          {no_of_items}
+          On this application we provide you with help to purchase farm items.{" "}
         </div>
-        <div>Total Price is: {calcTotal(200, 30)}</div>
+        <div className="flex flex-row gap-2">
+          <div className="p-2 border border-green">
+            <Image src="/kale.jpeg" alt="cow" width={500} height={500}></Image>
+          </div>
+          <div className="p-2 border border-green">
+            <Image src="/cow.webp" alt="cow" width={500} height={500}></Image>
+          </div>
+        </div>
       </div>
     </div>
   );
