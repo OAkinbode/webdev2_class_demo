@@ -14,9 +14,7 @@ const Header = () => {
         <div className="flex space-x-4">
           <Link href="/">
             {" "}
-            <a>
-              <div className="text-white">Home</div>
-            </a>
+            <div className="text-white">Home</div>
           </Link>
           <Link href="/livestock">
             <div className="text-white">Livestock</div>
