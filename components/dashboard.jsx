@@ -11,7 +11,7 @@ const Dashboard = ({ name, person, no_of_items, calcTotal }) => {
         </div>
         <div className="flex flex-row gap-2">
           <div className="p-2 border border-green">
-            <Image src="/kale.jpeg" alt="cow" width={500} height={500}></Image>
+            <Image src="/kale.jpeg" alt="kale" width={500} height={500}></Image>
           </div>
           <div className="p-2 border border-green">
             <Image src="/cow.webp" alt="cow" width={500} height={500}></Image>
