@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { toast, Toaster, useToaster } from "react-hot-toast";
 
-const Form2 = () => {
+const Form2 = ({ animalPicture, setIsModalOpen }) => {
   // State to manage form data
   const [formData, setFormData] = useState({
     name: "",
@@ -19,9 +20,9 @@ const Form2 = () => {
 
   const submitFunction = (event) => {
     event.preventDefault();
-    // console.log("livestock data: ", formData);
     setAnimalName(formData.name);
-    // console.log("Animal name: ", animalName);
+    setIsModalOpen(false);
+    toast.success(formData.name);
   };
 
   // Function to handle form field changes
@@ -35,17 +36,16 @@ const Form2 = () => {
 
   return (
     <div>
-      {formData.name.toLowerCase() === "cow" && (
-        <div className="m-2 rounded-lg border-2 border-green-700 ">
-          <Image
-            src="/cow.webp"
-            alt="cow"
-            width={500}
-            height={500}
-            className="rounded-lg"
-          ></Image>
-        </div>
-      )}
+      <div className="m-2 rounded-lg border-2 border-green-700 ">
+        <Image
+          src={animalPicture}
+          alt="animalPicture"
+          width={500}
+          height={500}
+          className="rounded-lg"
+        ></Image>
+      </div>
+
       <div>
         <form
           onSubmit={submitFunction}
@@ -73,13 +73,14 @@ const Form2 = () => {
           <button
             type="submit"
             className={`hover:bg-red-300 ml-2 p-2 border border-gray-700 rounded-md ${
-              formData.name === "sola" ? "bg-green-100" : "bg-red-100"
+              formData.name === "cow" ? "bg-red-100" : "bg-red-100"
             }`}
           >
             Submit
           </button>
         </form>
       </div>
+      {/* <Toaster /> */}
     </div>
   );
 };
