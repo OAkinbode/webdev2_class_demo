@@ -24,6 +24,7 @@ dbg
 
 const LivestockComp = () => {
   const [quotes, setQuotes] = useState(null);
+  const [sliced, setSliced] = useState(null);
   const [spliced, setSpliced] = useState(null);
   useEffect(() => {
     if (!quotes) {
@@ -37,12 +38,12 @@ const LivestockComp = () => {
     }
   }, [quotes]);
 
-  // useEffect(() => {
-  //   if (!spliced) {
-  //     const sp = splicing2();
-  //     setSpliced(sp);
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!spliced && quotes) {
+      const slicedQuotes = quotes.docs.slice(0, 20);
+      setSliced(slicedQuotes);
+    }
+  }, [quotes]);
 
   useEffect(() => {
     if (true) {
@@ -80,7 +81,7 @@ const LivestockComp = () => {
   // good example: "https://openlibrary.org/search.json?q=the+lord+of+the+rings", "https://collectionapi.metmuseum.org/public/collection/v1/objects/200"
 
   const getQuotes = async () => {
-    const url = "https://api.artic.edu/api/v1/artworks/search?q=cats";
+    const url = "https://openlibrary.org/search.json?q=the+lord+of+the+rings";
     const options = {
       method: "GET",
     };
@@ -106,26 +107,27 @@ const LivestockComp = () => {
     <div>
       <div className="">
         <ul>
-          {animals.length === 0 ? (
+          {sliced && sliced.length === 0 ? (
             <div>List is empty</div>
           ) : (
-            animals.map((animal) => {
+            sliced &&
+            sliced.map((doc) => {
               return (
                 <li
-                  key={animal}
+                  key={doc}
                   className="bg-green-200 p-2 border border-green-600"
-                  onClick={() => {
-                    displayAnimal(animal.name);
-                  }}
+                  //   onClick={() => {
+                  //     displayAnimal(animal.name);
+                  //   }}
                 >
-                  {animal.color} {animal.name} is available for sale
+                  {doc.title}
                 </li>
               );
             })
           )}
         </ul>
 
-        <ul>
+        {/* <ul>
           {quotes && quotes.data.length === 0 ? (
             <div>List is empty</div>
           ) : (
@@ -135,16 +137,16 @@ const LivestockComp = () => {
                 <li
                   key={item}
                   className="bg-green-200 p-2 border border-green-600"
-                  onClick={() => {
-                    displayAnimal(item.api_link);
-                  }}
+                    onClick={() => {
+                      displayAnimal(item.api_link);
+                    }}
                 >
-                  Link: <Link href={item.api_link}>{item.api_link}</Link>
+                  <Link href={item.api_link}>{item.api_link}</Link>
                 </li>
               );
             })
           )}
-        </ul>
+        </ul> */}
 
         {/* {quotes && (
               <div className="bg-blue-300">

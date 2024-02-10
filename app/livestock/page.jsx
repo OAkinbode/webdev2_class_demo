@@ -5,6 +5,7 @@ import Footer from "@/components/footer";
 import Image from "next/image";
 import Link from "next/link";
 import LivestockComp from "@/components/livestockComp";
+import LivestockComp2 from "@/components/livestockComp2";
 import Articles from "@/components/articles";
 
 const Livestock = () => {
@@ -12,8 +13,8 @@ const Livestock = () => {
     <div>
       <Header />
       <div className="min-h-screen h-screen flex justify-center items-center flex-col gap-4">
-        <LivestockComp />
-        <Articles />
+        <LivestockComp2 />
+        {/* <Articles /> */}
       </div>
       <Footer />
     </div>
