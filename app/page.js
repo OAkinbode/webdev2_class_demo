@@ -23,7 +23,7 @@ export default function Home() {
       <div className="items-center justify-center p-2 gap-2 flex flex-row">
         <SidePane />
         <div className="text-xl text-gray-600 flex-1 bg-white h-screen border-2 border-yellow-700">
-          <Dashboard2 />
+          <Dashboard />
         </div>
       </div>
       <Footer />

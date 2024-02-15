@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+const animals = ["dog", "cat", "cow", "pig", "chicken"];
+
 const Form3 = ({ clickedImage }) => {
   // State to manage form data
   const [formData, setFormData] = useState({
@@ -11,10 +13,18 @@ const Form3 = ({ clickedImage }) => {
   });
 
   const [animalName, setAnimalName] = useState("");
+  const [selectedAnimal, setSelectedAnimal] = useState("");
 
-  //   useEffect(() => {
-  //     if (animalName.length > 0) console.log("Name: ", animalName);
-  //   }, [animalName]);
+  useEffect(() => {
+    if (selectedAnimal.length > 0) {
+      console.log("selected animal: ", selectedAnimal);
+    }
+  }, [selectedAnimal]);
+
+  const selectAnimal = (event) => {
+    event.preventDefault();
+    setSelectedAnimal(event.target.value);
+  };
 
   const submitFunction = (event) => {
     event.preventDefault();
@@ -70,13 +80,21 @@ const Form3 = ({ clickedImage }) => {
               className="border border-blue-500 active:bg-green-200"
             />
           </div>
-          <div>
-            <select id="dropdown" name="dropdown">
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
+          <div className="py-2">
+            <select
+              id="dropdown"
+              name="dropdown"
+              className="border border-blue-400 rounded-md"
+              // value={value}
+              onChange={selectAnimal}
+            >
+              {animals &&
+                animals.map((animal, index) => (
+                  <option key={animal}>{animal}</option>
+                ))}
             </select>
           </div>
+
           <button
             type="submit"
             className={`hover:bg-red-300 ml-2 p-2 border border-gray-700 rounded-md ${
