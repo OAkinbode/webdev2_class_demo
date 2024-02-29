@@ -34,7 +34,11 @@ const APICallAuth = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name: "Sola", address: "Longrich way Canada" }),
+      body: JSON.stringify({
+        name: "Sola",
+        address: "Longrich way Canada",
+        age: 22,
+      }),
     };
 
     try {
@@ -58,8 +62,8 @@ const APICallAuth = () => {
   // Function to handle form submission (you can modify this based on your requirements)
   const handleSubmit = (event) => {
     event.preventDefault();
-    getItems();
-    // postItems();
+    // getItems();
+    postItems();
     // You can perform additional actions with the values here
   };
 
