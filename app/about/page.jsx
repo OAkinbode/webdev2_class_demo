@@ -8,13 +8,9 @@ import DogListComp from "@/components/dogLIstComp";
 const About = () => {
   const [dogs, setDogs] = useState([]);
 
-  useEffect(() => {
-    console.log("Dogs: ", dogs);
-  }, [dogs]);
-
   const addDog = (dog) => {
-    const newDogList = [...dogs, { name: dog.name, age: ++dog.age }];
-    setDogs(newDogList);
+    const newDogList = [...dogs, { name: dog.name, age: dog.age }];
+    setDogs(newDogList.sort((a, b) => a.age - b.age));
   };
 
   const removeDog = (index) => {

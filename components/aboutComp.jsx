@@ -14,7 +14,7 @@ const AboutComp = ({ dogs, setDogs, removeDog }) => {
   }, []);
 
   const adjustDogList = () => {
-    setDogs(dogsList);
+    setDogs(dogsList.sort((a, b) => a.age - b.age));
   };
 
   return (
@@ -57,7 +57,7 @@ const AboutComp = ({ dogs, setDogs, removeDog }) => {
                       removeDog(index);
                     }}
                   >
-                    X
+                    x
                   </td>
                 </tr>
               ))}
