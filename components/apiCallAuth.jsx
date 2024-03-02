@@ -37,7 +37,7 @@ const APICallAuth = () => {
       body: JSON.stringify({
         name: "Sola",
         address: "Longrich way Canada",
-        age: 22,
+        age: 30,
       }),
     };
 
