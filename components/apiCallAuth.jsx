@@ -1,11 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState, useContext } from "react";
+import MyContext from "@/components/myContext";
 
-const APICallAuth = () => {
+const APICallAuth = ({ children }) => {
   const [items, setItems] = useState(null);
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
+
+  const { myValue, setMyValue } = useContext(MyContext);
 
   const getItems = async () => {
     const url = `https://numbersapi.p.rapidapi.com/${month}/${day}/date?fragment=true&json=true`;
@@ -64,6 +66,7 @@ const APICallAuth = () => {
     event.preventDefault();
     // getItems();
     postItems();
+    setMyValue(`Date is: ${day}th day of the ${month}th month`);
     // You can perform additional actions with the values here
   };
 
@@ -105,6 +108,9 @@ const APICallAuth = () => {
             </button>
           </div>
         </form>
+      </div>
+      <div className="border border-blue-500 rounded-md p-2 bg-blue-100">
+        {children}
       </div>
     </div>
   );
