@@ -16,7 +16,6 @@ const Data = () => {
         </APICallAuth>
         <div className="bg-red-200 ">
           <p>Context Value: {myValue}</p>
-          {/* <button onClick={() => setMyValue("New Value")}>Change Value</button> */}
         </div>
       </div>
 

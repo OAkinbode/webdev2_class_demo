@@ -1,8 +1,14 @@
 // components/Header.js
 
 import Link from "next/link";
+import { useUserAuth } from "../app/_utils/auth-context";
 
 const Header = () => {
+  const { firebaseSignOut } = useUserAuth();
+
+  const signout = async () => {
+    await firebaseSignOut();
+  };
   return (
     <header className="bg-green-700 p-4">
       <nav className="flex items-center justify-between">
@@ -29,6 +35,13 @@ const Header = () => {
             <div className="text-white">Contact</div>
           </Link>
         </div>
+        <button
+          onClick={() => {
+            signout();
+          }}
+        >
+          Sign out
+        </button>
       </nav>
     </header>
   );

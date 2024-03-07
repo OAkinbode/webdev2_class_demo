@@ -6,8 +6,28 @@ import { person1 } from "@/components/json2";
 import SidePane from "@/components/side_pane";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { useUserAuth } from "./_utils/auth-context";
+import { react, useEffect, useState } from "react";
 
 export default function Home() {
+  const { user, gitHubSignIn } = useUserAuth();
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     signIn();
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    if (user) {
+      console.log("user", user);
+    }
+  }, [user]);
+
+  const signIn = async () => {
+    await gitHubSignIn();
+  };
+
   const sampleObject = {
     comment: "This is a prop object",
     value: 3,
@@ -17,16 +37,30 @@ export default function Home() {
     return number1 + number2;
   };
 
-  return (
-    <main className="min-h-screen ">
-      <Header />
-      <div className="items-center justify-center p-2 gap-2 flex flex-row">
-        <SidePane />
-        <div className="text-xl text-gray-600 flex-1 bg-white h-screen border-2 border-yellow-700">
-          <Dashboard />
+  if (!user) {
+    return (
+      <main className="min-h-screen ">
+        <div className="flex items-center justify-center p-2 gap-2 flex flex-row">
+          <div>You are logged out: Click this button to log back in</div>
+          <button className="bg-green-600 text-white" onClick={signIn}>
+            {" "}
+            login{" "}
+          </button>
         </div>
-      </div>
-      <Footer />
-    </main>
-  );
+      </main>
+    );
+  } else {
+    return (
+      <main className="min-h-screen ">
+        <Header />
+        <div className="items-center justify-center p-2 gap-2 flex flex-row">
+          <SidePane />
+          <div className="text-xl text-gray-600 flex-1 bg-white h-screen border-2 border-yellow-700">
+            <Dashboard />
+          </div>
+        </div>
+        <Footer />
+      </main>
+    );
+  }
 }
