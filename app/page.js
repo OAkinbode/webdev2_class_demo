@@ -12,12 +12,6 @@ import { react, useEffect, useState } from "react";
 export default function Home() {
   const { user, gitHubSignIn } = useUserAuth();
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     signIn();
-  //   }
-  // }, []);
-
   useEffect(() => {
     if (user) {
       console.log("user", user);
@@ -40,9 +34,9 @@ export default function Home() {
   if (!user) {
     return (
       <main className="min-h-screen ">
-        <div className="flex items-center justify-center p-2 gap-2 flex flex-row">
+        <div className="items-center justify-center p-2 gap-2 flex flex-row">
           <div>You are logged out: Click this button to log back in</div>
-          <button className="bg-green-600 text-white" onClick={signIn}>
+          <button className="bg-green-600 text-white p-2" onClick={signIn}>
             {" "}
             login{" "}
           </button>
