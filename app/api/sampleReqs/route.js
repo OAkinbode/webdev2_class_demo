@@ -1,5 +1,6 @@
 import Cors from "cors";
-import { runMiddleware, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
+import { runMiddleware } from "next-connect";
 
 const cors = Cors({
   origin: "http://localhost:3000",
