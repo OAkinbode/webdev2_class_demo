@@ -1,6 +1,21 @@
-import { NextResponse } from "next/server";
+import Cors from "cors";
+import { runMiddleware, NextResponse } from "next/server";
 
-export async function POST(req) {
+const cors = Cors({
+  origin: "http://localhost:3000",
+  methods: ["POST", "OPTIONS"], // Add other methods if needed
+  allowedHeaders: ["Content-Type", "Authorization"],
+});
+
+export default async function handler(req, res) {
+  // Run CORS middleware
+  await runMiddleware(req, res, cors);
+
+  if (req.method === "OPTIONS") {
+    // Preflight request response
+    return NextResponse.empty();
+  }
+
   const { headers } = req;
 
   // Get the Authorization header
