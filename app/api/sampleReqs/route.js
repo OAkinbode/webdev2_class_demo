@@ -1,6 +1,16 @@
-import { NextResponse } from "next/server";
+import { NextResponse, runMiddleware } from "next/server";
+import Cors from "cors";
 
-export async function POST(req) {
+// Initializing the cors middleware
+const cors = Cors({
+  origin: "*",
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Authorization", "Content-Type"],
+  credentials: true,
+});
+
+export default async function handler(req, res) {
+  await runMiddleware(req, res, cors);
   const { headers } = req;
 
   // Get the Authorization header
