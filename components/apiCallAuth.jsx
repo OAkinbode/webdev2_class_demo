@@ -65,7 +65,7 @@ const APICallAuth = ({ children }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     getItems();
-    postItems();
+    // postItems();
     setMyValue(`Date is: ${day}th day of the ${month}th month`);
     // You can perform additional actions with the values here
   };
