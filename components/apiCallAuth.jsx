@@ -29,6 +29,7 @@ const APICallAuth = ({ children }) => {
     }
   };
 
+  // Redundant
   const postItems = async () => {
     const url = "/api/sampleReqs";
     const options = {
