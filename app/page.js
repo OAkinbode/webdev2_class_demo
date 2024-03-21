@@ -32,33 +32,33 @@ export default function Home() {
     return number1 + number2;
   };
 
-  // if (!user) {
-  //   return (
-  //     <main className="min-h-screen ">
-  //       <div className="items-center justify-center p-2 gap-2 flex flex-row">
-  //         <div>You are logged out: Click this button to log back in</div>
-  //         <button className="bg-green-600 text-white p-2" onClick={signIn}>
-  //           {" "}
-  //           login{" "}
-  //         </button>
-  //       </div>
-  //     </main>
-  //   );
-  // } else {
-  return (
-    <main className="min-h-screen ">
-      <Header />
-      <div className="items-center justify-center p-2 gap-2 flex flex-row">
-        <SidePane />
-        <div className="text-xl text-gray-600 flex-1 bg-white h-screen border-2 border-yellow-700">
-          <Dashboard />
+  if (!user) {
+    return (
+      <main className="min-h-screen ">
+        <div className="items-center justify-center p-2 gap-2 flex flex-row">
+          <div>You are logged out: Click this button to log back in</div>
+          <button className="bg-green-600 text-white p-2" onClick={signIn}>
+            {" "}
+            login{" "}
+          </button>
         </div>
-        <div className="text-xl text-gray-600 flex-1 bg-white h-screen border-2 border-yellow-700">
-          <DatabaseCrud />
+      </main>
+    );
+  } else {
+    return (
+      <main className="min-h-screen ">
+        <Header />
+        <div className="items-center justify-center p-2 gap-2 flex flex-row">
+          <SidePane />
+          <div className="text-xl text-gray-600 flex-1 bg-white h-screen border-2 border-yellow-700">
+            <Dashboard />
+          </div>
+          <div className="text-xl text-gray-600 flex-1 bg-white h-screen border-2 border-yellow-700">
+            <DatabaseCrud />
+          </div>
         </div>
-      </div>
-      <Footer />
-    </main>
-  );
-  // }
+        <Footer />
+      </main>
+    );
+  }
 }
