@@ -10,7 +10,7 @@ import {
 } from "@/app/_services/shopping-list-service";
 
 const DatabaseCrud = ({ clickedImage }) => {
-  // State to manage form data 7fyy
+  // State to manage form data
   const [formData, setFormData] = useState({
     name: "",
     quantity: "",
