@@ -8,7 +8,7 @@ export async function POST(request) {
   // store in database
   // ...
   // update id
-  newUser.id = 1;
+  newUser.id = 4;
 
   return new Response(JSON.stringify(newUser), { status: 201 });
 }

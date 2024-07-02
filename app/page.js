@@ -13,6 +13,8 @@ import DatabaseCrud from "@/components/dataBaseCrud";
 export default function Home() {
   const { user, gitHubSignIn } = useUserAuth();
 
+  // console.log("user: ", useUserAuth);
+
   // useEffect(() => {
   //   if (user) {
   //     console.log("user", user);
