@@ -80,7 +80,7 @@ const DatabaseCrud = ({ clickedImage }) => {
             <input
               type="text"
               name="name"
-              placeholder="Enter your name"
+              placeholder="Enter product name"
               value={formData.name}
               onChange={handleInputChange}
               className="border border-blue-500 active:bg-green-200"
